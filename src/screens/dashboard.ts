@@ -55,6 +55,7 @@ class Dashboard extends HTMLElement {
         submitForm()  {
 
             addSong(song);
+            this.render();
            
         }
 
@@ -65,15 +66,17 @@ class Dashboard extends HTMLElement {
                 <link rel="stylesheet" href="../src/screens/styles.css">
                 <h1>MY PLAYLIST</h1>
                 <div class="createSong">
+                    
+                    <form id="imageForm">
                     <input id="title" type="text" required placeholder="Titulo">
                     <input id="autor" type="text" required placeholder="Autor">
                     <input id="album" type="text" required placeholder="Album">
                     <input id="duracion" type="text" required placeholder="Duración">
-                    <form id="imageForm">
                         <label for="photo" id="customLabel">Img</label>
                         <input type="file" id="photo" accept="image/*">
+                        <button id="submitButton">Guardar</button>
                     </form>
-                    <button id="submitButton">Guardar</button>
+                    
                  
                 </div>
                 <section>
@@ -102,6 +105,7 @@ class Dashboard extends HTMLElement {
 
                 const songTitle = this.shadowRoot?.querySelector("#title") as HTMLInputElement;
                 songTitle.addEventListener('change', this.changeTitle);
+                songTitle.required
 	
                 const songArtist = this.shadowRoot?.querySelector("#autor") as HTMLInputElement;
                 songArtist.addEventListener('change', this.changeAutor);
